@@ -1,0 +1,15 @@
+{
+  "name": "appnode",
+  "version": "1.0.0",
+  "description": "Apliacion para pruebas con resemble js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "mz": "^2.7.0",
+    "resemblejs": "^2.10.0"
+  }
+}
