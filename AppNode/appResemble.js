@@ -29,14 +29,7 @@ async function getDiff(imgIni, imgFinal, resultado){
     await fs.writeFile(resultado, data.getBuffer());
 }
 
-getDiff('./AppNode/screenshots/CrearExistenteInicio.png',
-        './AppNode/screenshots/CrearExistenteFin.png',
-        './AppNode/salidas/CrearExistenteRS.png');
+getDiff('./cypress/screenshots/primerpantallazo.png',
+        './cypress/screenshots/segundopantallazo.png',
+        './AppNode/salidas/resultado.png');
 
-getDiff('./AppNode/screenshots/FiltroMateriasInicio.png',
-        './AppNode/screenshots/FiltroMateriasFin.png',
-        './AppNode/salidas/FiltroMateriasRS.png');
-
-getDiff('./AppNode/screenshots/LoginOkInicio.png',
-        './AppNode/screenshots/LoginOkFin.png',
-        './AppNode/salidas/LoginOkRS.png');
