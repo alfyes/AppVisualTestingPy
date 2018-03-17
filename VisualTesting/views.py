@@ -33,7 +33,7 @@ class IndexView(View):
             ruta_imagen_2 = './TestImages/segunda_{0}.png'.format(marca_tiempo)
             ruta_imagen_salida = './TestImages/salida_{0}.png'.format(marca_tiempo)
 
-            # res_cypress = ejecutar_comando(["./node_modules/cypress/bin/cypress", "run"])
+            res_cypress = ejecutar_comando(["./node_modules/cypress/bin/cypress", "run"])
 
             shutil.copyfile('./cypress/screenshots/primerpantallazo.png',
                             ruta_imagen_1)
