@@ -76,7 +76,7 @@ WSGI_APPLICATION = 'AppVisualTestingPy.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
-DDATABASES = {
+DATABASES = {
     'default': DATABASE_DICT
 }
 

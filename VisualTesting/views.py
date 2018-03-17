@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 
 import subprocess
 
+from datetime import datetime
 from django.shortcuts import render
 
 from django.views import View
@@ -13,6 +14,7 @@ import time
 from django.urls import reverse
 
 from CmdAJAR import ejecutar_comando
+from VisualTesting.models import Reporte
 
 
 class IndexView(View):
@@ -27,7 +29,7 @@ class IndexView(View):
             ruta_imagen_2 = './TestImages/segunda_{0}.png'.format(marca_tiempo)
             ruta_imagen_salida = './TestImages/salida_{0}.png'.format(marca_tiempo)
 
-            res_cypress = ejecutar_comando(["./node_modules/cypress/bin/cypress", "run"])
+            # res_cypress = ejecutar_comando(["./node_modules/cypress/bin/cypress", "run"])
 
             shutil.copyfile('./cypress/screenshots/primerpantallazo.png',
                             ruta_imagen_1)
@@ -38,6 +40,13 @@ class IndexView(View):
 
             shutil.copyfile('./AppNode/salidas/resultado.png',
                             ruta_imagen_salida)
+
+            reporte = Reporte(imagen_1=ruta_imagen_1[1:],
+                              imagen_2=ruta_imagen_2[1:],
+                              imagen_salida=ruta_imagen_salida[1:],
+                              fecha=datetime.today(),
+                              info_comparacion=res_resemble['salida'])
+            reporte.save()
 
         except Exception, error:
             error_general = "Ocurrió un error durante la ejecución de la prueba: " + error.__str__()
