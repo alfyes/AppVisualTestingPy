@@ -54,5 +54,6 @@ class IndexView(View):
 
         except Exception, error:
             error_general = "Ocurrió un error durante la ejecución de la prueba: " + error.__str__()
+            print error_general
 
         return redirect(reverse('visual_testing:index'))
