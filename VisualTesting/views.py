@@ -21,7 +21,7 @@ class IndexView(View):
         error_general = None
         res_cypress = None
         try:
-            res_cypress = ejecutar_comando(["./node_modules/cypress/bin/cypress", "run", "."])
+            res_cypress = ejecutar_comando(["./node_modules/cypress/bin/cypress", "run"])
 
             res_resemble = ejecutar_comando(["node", "./AppNode/appResemble.js"])
         except Exception, error:
