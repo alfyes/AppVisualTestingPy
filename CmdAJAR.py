@@ -7,6 +7,4 @@ def ejecutar_comando(cmd):
                                   stderr=subprocess.PIPE)
     out, error = my_process.communicate()
 
-    my_process.terminate()
-
     return {'salida': out, 'error': error}

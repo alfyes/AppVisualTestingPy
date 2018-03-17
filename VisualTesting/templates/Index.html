@@ -12,14 +12,20 @@
 {% else %}
     <table>
         <thead>
-            <th>Prueba</th> <th>Resultado</th> <th>Error</th>
+            <tr>
+                <th>Prueba</th> <th>Resultado</th> <th>Error</th>
+            </tr>
         </thead>
         <tbody>
         {% if res_cypress %}
-        <td>cypress</td> <td>{{ res_cypress.salida }}</td> <td>{{ res_cypress.error }}</td>
+            <tr>
+                <td>cypress</td> <td>{{ res_cypress.salida }}</td> <td>{{ res_cypress.error }}</td>
+            </tr>
         {% endif %}
         {% if res_resemble %}
-        <td>resemble js</td> <td>{{ res_resemble.salida }}</td> <td>{{ res_resemble.error }}</td></tbody>
+            <tr>
+                <td>resemble js</td> <td>{{ res_resemble.salida }}</td> <td>{{ res_resemble.error }}</td></tbody>
+            </tr>
         {% endif %}
     </table>
 
