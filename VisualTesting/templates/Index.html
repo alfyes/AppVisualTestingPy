@@ -5,9 +5,25 @@
     <title>Visual Testing</title>
 </head>
 <body>
-salida:<br>
-{{ salida }}
-error:<br>
-{{ error }}
+{% if error_general %}
+
+    Error general:<br>
+    {{ error_general }}
+{% else %}
+    <table>
+        <thead>
+            <th>Prueba</th> <th>Resultado</th> <th>Error</th>
+        </thead>
+        <tbody>
+        {% if res_cypress %}
+        <td>cypress</td> <td>{{ res_cypress.salida }}</td> <td>{{ res_cypress.error }}</td>
+        {% endif %}
+        {% if res_resemble %}
+        <td>resemble js</td> <td>{{ res_resemble.salida }}</td> <td>{{ res_resemble.error }}</td></tbody>
+        {% endif %}
+    </table>
+
+{% endif %}
+
 </body>
 </html>
