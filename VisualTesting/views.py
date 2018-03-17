@@ -53,7 +53,7 @@ class IndexView(View):
             reporte.save()
 
         except Exception, error:
-            error_general = "Ocurrió un error durante la ejecución de la prueba: " + error.__str__()
+            error_general = "Ocurrio un error durante la ejecucion de la prueba: " + error.__str__()
             print error_general
 
         return redirect(reverse('visual_testing:index'))
