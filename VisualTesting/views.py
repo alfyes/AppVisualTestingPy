@@ -55,5 +55,7 @@ class IndexView(View):
         except Exception, error:
             error_general = "Ocurrio un error durante la ejecucion de la prueba: " + error.__str__()
             print error_general
+            reportes = Reporte.objects.all().order_by('-fecha')
+            return render(request, 'Index.html', {'reportes': reportes, 'error_general': error_general})
 
         return redirect(reverse('visual_testing:index'))

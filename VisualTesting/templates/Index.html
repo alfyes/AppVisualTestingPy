@@ -10,6 +10,11 @@
     <br>
     <h1>VISUAL TESTING - Resemble JS</h1>
     <br><br>
+    {% if error_general %}
+        <div class="alert alert-primary" role="alert">
+            {{ error_general }}
+        </div>
+    {% endif %}
     <form action="{% url 'visual_testing:index' %}" method="post">
         {% csrf_token %}
         <button class="btn btn-primary" id="Generar">Genera reporte</button>
