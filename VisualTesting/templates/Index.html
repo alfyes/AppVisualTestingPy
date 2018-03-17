@@ -2,21 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>Visual Testing</title>
 </head>
 <body>
+<div class="container-fluid">
+    <br>
+    <h1>VISUAL TESTING - Resemble JS</h1>
+    <br><br>
+    <form action="{% url 'visual_testing:index' %}" method="post">
+        {% csrf_token %}
+        <button class="btn btn-primary" id="Generar">Genera reporte</button>
+    </form>
 
-<form action="{% url 'visual_testing:index' %}" method="post">
-    {% csrf_token %}
-    <button id="Generar">Genera reporte</button>
-</form>
-
-{% if error_general %}
-
-    Error general:<br>
-    {{ error_general }}
-{% else %}
-    <table>
+    <table class="table table-hover">
         <thead>
             <tr>
                 <th>Fecha</th> <th>Imagen Base</th> <th>Imagen Modificada</th>
@@ -26,16 +25,18 @@
         <tbody>
         {% for reporte in reportes %}
             <tr>
-                <td>{{ reporte.fecha }}</td> <td><img src="{{ reporte.imagen_1 }}"></td>
-                <td><img src="{{ reporte.imagen_2 }}"></td>
-                <td><img src="{{ reporte.imagen_salida }}"></td>
+                <td>{{ reporte.fecha }}</td> <td><img class="rounded" src="{{ reporte.imagen_1 }}" style="width: 250px;height: 250px"></td>
+                <td><img class="rounded" src="{{ reporte.imagen_2 }}" style="width: 250px;height: 250px"></td>
+                <td><img class="rounded" src="{{ reporte.imagen_salida }}" style="width: 250px;height: 250px"></td>
                 <td>{{ reporte.info_comparacion }}</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-{% endif %}
-
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 </html>
