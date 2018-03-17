@@ -24,8 +24,8 @@ class IndexView(View):
             res_cypress = ejecutar_comando(["./node_modules/cypress/bin/cypress", "run", "."])
 
             res_resemble = ejecutar_comando(["node", "./AppNode/appResemble.js"])
-        except Exception:
-            error_general = "Ocurrió un error durante la ejecución de la prueba"
+        except Exception, error:
+            error_general = "Ocurrió un error durante la ejecución de la prueba: " + error.__str__()
 
         return render(request, 'Index.html', {'res_cypress': res_cypress,
                                               'res_resemble': res_resemble,
