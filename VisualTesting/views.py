@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 import subprocess
 
 from datetime import datetime
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from django.views import View
 
@@ -19,6 +19,10 @@ from VisualTesting.models import Reporte
 
 class IndexView(View):
     def get(self, request):
+        reportes = Reporte.objects.all().order_by('-fecha')
+        return render(request, 'Index.html', {'reportes': reportes})
+
+    def post(self, request):
         # res = subprocess.call(["node", "C:/AJAR/Pruebas Auto/PA-Taller6/AppNode/appResemble.js"])
         res_resemble = None
         error_general = None
@@ -51,6 +55,4 @@ class IndexView(View):
         except Exception, error:
             error_general = "Ocurrió un error durante la ejecución de la prueba: " + error.__str__()
 
-        return render(request, 'Index.html', {'res_cypress': res_cypress,
-                                              'res_resemble': res_resemble,
-                                              'error_general': error_general})
+        return redirect(reverse('visual_testing:index'))

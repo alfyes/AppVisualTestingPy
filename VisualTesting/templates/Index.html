@@ -5,6 +5,12 @@
     <title>Visual Testing</title>
 </head>
 <body>
+
+<form action="{% url 'visual_testing:index' %}" method="post">
+    {% csrf_token %}
+    <button id="Generar">Genera reporte</button>
+</form>
+
 {% if error_general %}
 
     Error general:<br>
@@ -13,20 +19,20 @@
     <table>
         <thead>
             <tr>
-                <th>Prueba</th> <th>Resultado</th> <th>Error</th>
+                <th>Fecha</th> <th>Imagen Base</th> <th>Imagen Modificada</th>
+                <th>Diferencias</th>  <th>Información Importante</th>
             </tr>
         </thead>
         <tbody>
-        {% if res_cypress %}
+        {% for reporte in reportes %}
             <tr>
-                <td>cypress</td> <td>{{ res_cypress.salida }}</td> <td>{{ res_cypress.error }}</td>
+                <td>{{ reporte.fecha }}</td> <td><img src="{{ reporte.imagen_1 }}"></td>
+                <td><img src="{{ reporte.imagen_2 }}"></td>
+                <td><img src="{{ reporte.imagen_salida }}"></td>
+                <td>{{ reporte.info_comparacion }}</td>
             </tr>
-        {% endif %}
-        {% if res_resemble %}
-            <tr>
-                <td>resemble js</td> <td>{{ res_resemble.salida }}</td> <td>{{ res_resemble.error }}</td></tbody>
-            </tr>
-        {% endif %}
+        {% endfor %}
+        </tbody>
     </table>
 
 {% endif %}
